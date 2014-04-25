@@ -189,6 +189,38 @@ Sidebar.Object3D = function ( editor ) {
 
 	container.add( objectVisibleRow );
 
+
+	// castShadow
+
+	var objectCastShadowRow = new UI.Panel();
+	var objectCastShadow = new UI.Checkbox().onChange( update );
+
+	objectCastShadowRow.add( new UI.Text( 'Cast Shadow' ).setWidth( '90px' ) );
+	objectCastShadowRow.add( objectCastShadow );
+
+	container.add( objectCastShadowRow );
+
+	// Receive shadow
+
+	var objectReceiveShadowRow = new UI.Panel();
+	var objectReceiveShadow = new UI.Checkbox().onChange( update );
+
+	objectReceiveShadowRow.add( new UI.Text( 'Receive Shadow' ).setWidth( '90px' ) );
+	objectReceiveShadowRow.add( objectReceiveShadow );
+
+	container.add( objectReceiveShadowRow );
+
+	// ShadowDarkness
+
+	var objectShadowDarknessRow = new UI.Panel();
+	var objectShadowDarkness = new UI.Number().setRange( 0, 1 ).onChange( update );
+
+	objectShadowDarknessRow.add( new UI.Text( 'Shadow darkness' ).setWidth( '90px' ) );
+	objectShadowDarknessRow.add( objectShadowDarkness );
+
+	container.add( objectShadowDarknessRow );
+
+
 	// user data
 
 	var objectUserDataRow = new UI.Panel();
@@ -215,8 +247,6 @@ Sidebar.Object3D = function ( editor ) {
 
 	container.add( objectUserDataRow );
 
-
-	//
 
 	function updateScaleX() {
 
@@ -355,6 +385,16 @@ Sidebar.Object3D = function ( editor ) {
 			}
 
 			object.visible = objectVisible.getValue();
+
+			object.castShadow = objectCastShadow.getValue();
+
+			object.receiveShadow = objectReceiveShadow.getValue();
+
+			if ( object.shadowDarkness !== undefined ) {
+
+				object.shadowDarkness = objectShadowDarkness.getValue();
+
+			}
 
 			try {
 
@@ -546,6 +586,16 @@ Sidebar.Object3D = function ( editor ) {
 			}
 
 			objectVisible.setValue( object.visible );
+
+			objectCastShadow.setValue( object.castShadow );
+
+			objectReceiveShadow.setValue( object.receiveShadow );
+
+			if ( object.shadowDarkness !== undefined ) {
+
+				objectShadowDarkness.setValue( object.shadowDarkness );
+
+			}
 
 			try {
 
