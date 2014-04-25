@@ -197,6 +197,7 @@ THREE.ObjectExporter.prototype = {
 				data.type = 'DirectionalLight';
 				data.color = object.color.getHex();
 				data.intensity = object.intensity;
+				data.castShadow = object.castShadow;
 
 			} else if ( object instanceof THREE.PointLight ) {
 
@@ -204,6 +205,7 @@ THREE.ObjectExporter.prototype = {
 				data.color = object.color.getHex();
 				data.intensity = object.intensity;
 				data.distance = object.distance;
+				data.castShadow = object.castShadow;
 
 			} else if ( object instanceof THREE.SpotLight ) {
 
@@ -213,18 +215,22 @@ THREE.ObjectExporter.prototype = {
 				data.distance = object.distance;
 				data.angle = object.angle;
 				data.exponent = object.exponent;
+				data.castShadow = object.castShadow;
 
 			} else if ( object instanceof THREE.HemisphereLight ) {
 
 				data.type = 'HemisphereLight';
 				data.color = object.color.getHex();
 				data.groundColor = object.groundColor.getHex();
+				data.castShadow = object.castShadow;
 
 			} else if ( object instanceof THREE.Mesh ) {
 
 				data.type = 'Mesh';
 				data.geometry = parseGeometry( object.geometry );
 				data.material = parseMaterial( object.material );
+				data.castShadow = object.castShadow;
+				data.receiveShadow = object.receiveShadow;
 
 			} else if ( object instanceof THREE.Sprite ) {
 
