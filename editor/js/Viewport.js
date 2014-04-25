@@ -194,7 +194,7 @@ var Viewport = function ( editor ) {
 				break;
 
 		}
-		
+
 		renderer.setClearColor( clearColor );
 
 		render();
@@ -430,16 +430,16 @@ var Viewport = function ( editor ) {
 	} );
 
 	signals.playAnimations.add( function (animations) {
-		
+
 		function animate() {
 
 			requestAnimationFrame( animate );
-			
+
 			for ( var i = 0; i < animations.length ; i ++ ) {
 
 				animations[i].update(0.016);
 
-			} 
+			}
 
 			render();
 		}
@@ -450,7 +450,7 @@ var Viewport = function ( editor ) {
 
 	//
 
-	var clearColor, renderer;
+	var clearColor;
 
 	if ( editor.config.getKey( 'renderer' ) !== undefined ) {
 
@@ -472,7 +472,11 @@ var Viewport = function ( editor ) {
 
 	renderer.autoClear = false;
 	renderer.autoUpdateScene = false;
+	renderer.shadowMapEnabled = true;
+	renderer.shadowMapSoft = true;
 	container.dom.appendChild( renderer.domElement );
+
+
 
 	animate();
 

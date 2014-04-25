@@ -83,7 +83,8 @@
 			window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
 
 			var editor = new Editor();
-
+			var renderer;
+			
 			var viewport = new Viewport( editor ).setId( 'viewport' );
 			document.body.appendChild( viewport.dom );
 
@@ -170,7 +171,7 @@
 
 				switch ( event.keyCode ) {
 
-					case 8: // prevent browser back 
+					case 8: // prevent browser back
 						event.preventDefault();
 						break;
 					case 46: // delete
